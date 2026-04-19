@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Person</h1>
+          <h1 class="m-0">Donors</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -24,7 +24,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">List of Persons</h3>
+              <h3 class="card-title">List of Donors</h3>
               <div class="float-right">
                 <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#AddNewModal">
                   <i class="fa fa-plus-circle fa fw"></i> Add New
@@ -40,12 +40,20 @@
                     <th>Last Name</th>
                     <th>Name</th>
                     <th>Middle Name</th>
-                    <th>Gender</th>
                     <th>Birthdate</th>
-                    <th>Occupation</th>
-                    <th>Citizenship</th>
-                    <th>address</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Civil Status</th>
                     <th>Contact</th>
+                    <th>Email Address</th>
+                    <th>Nationality</th>
+                    <th>Occupation</th>
+                    <th>Home Address</th>
+                    <th>Office Address</th>
+                    <th>Type of Donor</th>
+                    <th>Method of Collection</th>
+                    <th>Last Donation</th>
+                    <th>Number of Donations</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -59,7 +67,7 @@
     </div>
 
     
-
+ 
 
    <!-- ✅ Add New Modal -->
 <div class="modal fade" id="AddNewModal" tabindex="-1" role="dialog" aria-labelledby="AddNewModalLabel" aria-hidden="true">
@@ -92,6 +100,16 @@
           </div>
 
           <div class="form-group">
+            <label>Birthdate</label>
+            <input type="date" name="birthdate" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Age</label>
+            <input type="text" name="age" class="form-control" required />
+          </div>
+
+          <div class="form-group">
             <label>Gender</label>
             <select class="form-control" name="gender">
               <option value="Male">Male</option>
@@ -100,29 +118,62 @@
           </div>
 
           <div class="form-group">
-            <label>Birthdate</label>
-            <input type="date" name="birthdate" class="form-control" required />
-          </div>
-
-          <div class="form-group">
-            <label>Occupation</label>
-            <input type="text" name="occupation" class="form-control" required />
-          </div>
-
-          <div class="form-group">
-            <label>Citizenship</label>
-            <input type="text" name="citizenship" class="form-control" required />
-          </div>
-
-          <div class="form-group">
-            <label>Address</label>
-            <input type="text" name="address" class="form-control" required />
+            <label>Civil Status</label>
+            <input type="text" name="civil_status" class="form-control" required />
           </div>
 
           <div class="form-group">
             <label>Contact</label>
             <input type="text" name="contact" class="form-control" required />
           </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="text" name="email_address" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Nationality</label>
+            <input type="text" name="nationality" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+           <label>Occupation</label>
+           <input type="text" name="occupation" class="form-control" required />
+         </div>
+
+          <div class="form-group">
+            <label>Home Address</label>
+            <input type="text" name="homee_address" class="form-control" required />
+          </div>
+  
+          <div class="form-group">
+            <label>Office Address</label>
+            <input type="text" name="office_address" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Type of Donor</label>
+            <input type="text" name="type_of_donor" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Method of Collection</label>
+            <input type="text" name="method_of_collection" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Last Donation</label>
+            <input type="text" name="last_donation" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Number of Donations</label>
+            <input type="text" name="number_of_donations" class="form-control" required />
+          </div>
+
+
+
         </div> <!-- ✅ FIXED: closed modal-body -->
 
         <div class="modal-footer">
@@ -173,6 +224,16 @@
             <label>Middle Name</label>
             <input type="text" id="middle_name" name="middle_name" class="form-control" required />
           </div>
+          
+          <div class="form-group">
+            <label>Birthdate</label>
+            <input type="date" id="birthdate" name="birthdate" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Age</label>
+            <input type="text" id="age" name="age" class="form-control" required />
+          </div>
 
           <div class="form-group">
             <label>Gender</label>
@@ -182,30 +243,61 @@
             </select>
           </div>
 
-          <div class="form-group">
-            <label>Birthdate</label>
-            <input type="date" id="birthdate" name="birthdate" class="form-control" required />
-          </div>
-
-          <div class="form-group">
-            <label>Occupation</label>
-            <input type="text" id="occupation" name="occupation" class="form-control" required />
-          </div>
-
-          <div class="form-group">
-            <label>Citizenship</label>
-            <input type="text" id="citizenship" name="citizenship" class="form-control" required />
-          </div>
-
-          <div class="form-group">
-            <label>Address</label>
-            <input type="text" id="address" name="address" class="form-control" required />
+        <div class="form-group">
+            <label>Civil Status</label>
+            <input type="text" id="civil_status" name="civil_stattus" class="form-control" required />
           </div>
 
           <div class="form-group">
             <label>Contact</label>
             <input type="text" id="contact" name="contact" class="form-control" required />
           </div>
+
+           <div class="form-group">
+            <label>Email Address</label>
+            <input type="text" id="email_address" name="email_address" class="form-control" required />
+          </div>
+
+           <div class="form-group">
+            <label>Nationality</label>
+            <input type="text" id="nationality" name="nationality" class="form-control" required />
+          </div>
+
+           <div class="form-group">
+            <label>Occupation</label>
+            <input type="text" id="occupation" name="occupation" class="form-control" required />
+          </div>
+
+           <div class="form-group">
+            <label>Home Address</label>
+            <input type="text" id="home_address" name="home_address" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Office Address</label>
+            <input type="text" id="office_adress" name="office_adress" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Type of Donor</label>
+            <input type="text" id="type_of_donor" name="type_of_donor" class="form-control" required />
+          </div>
+
+           <div class="form-group">
+            <label>Method of Collection</label>
+            <input type="text" id="method_of_collection" name="method_of_collection" class="form-control" required />
+          </div>
+
+           <div class="form-group">
+            <label>Last Donation</label>
+            <input type="text" id="last_donation" name="last_donation" class="form-control" required />
+          </div>
+
+            <div class="form-group">
+            <label>Number of Donations</label>
+            <input type="text" id="number_of_donations" name="number_of_donations" class="form-control" required />
+          </div>
+
 
         </div> <!-- ✅ properly closed -->
 

@@ -39,16 +39,24 @@ $(document).on('click', '.edit-btn', function () {
     dataType: 'json',
     success: function (response) {
         if (response.data) {
-            $('#editUserModal #name').val(response.data.name);
-            $('#editUserModal #userId').val(response.data.donor_id);
             $('#editUserModal #last_name').val(response.data.last_name);
+            $('#editUserModal #userId').val(response.data.donor_id);
+            $('#editUserModal #name').val(response.data.name);
             $('#editUserModal #middle_name').val(response.data.middle_name);
-            $('#editUserModal #contact').val(response.data.contact);
-            $('#editUserModal #address').val(response.data.address);
-            $('#editUserModal #citizenship').val(response.data.citizenship);
-            $('#editUserModal #occupation').val(response.data.occupation);
-            $('#editUserModal #gender').val(response.data.gender);
             $('#editUserModal #birthdate').val(response.data.birthdate);
+            $('#editUserModal #age').val(response.data.age);
+            $('#editUserModal #gender').val(response.data.gender);
+            $('#editUserModal #civil_status').val(response.data.civil_status);
+            $('#editUserModal #contact').val(response.data.contact);
+            $('#editUserModal #email_address').val(response.data.email_address);
+            $('#editUserModal #nationality').val(response.data.nationality);
+            $('#editUserModal #occupation').val(response.data.occupation);
+            $('#editUserModal #home_address').val(response.data.home_address);
+            $('#editUserModal #office_address').val(response.data.office_address);
+            $('#editUserModal #type_of_donor').val(response.data.type_of_donor);
+            $('#editUserModal #method_of_collection').val(response.data.method_of_collection);
+            $('#editUserModal #last_donation').val(response.data.last_donation);
+            $('#editUserModal #number_of_donations').val(response.data.number_of_donations);
             $('#editUserModal').modal('show');
         } else {
             alert('Error fetching donor data');
@@ -137,13 +145,23 @@ $(document).ready(function () {
         { data: 'last_name' },
         { data: 'name' },
         { data: 'middle_name' },
-        { data: 'gender' },
         { data: 'birthdate' },
-        { data: 'occupation' },
-        { data: 'citizenship' },
-        { data: 'address' },
+        { data: 'age' },
+        { data: 'gender' },
+        { data: 'civil_status' },
         { data: 'contact' },
+        { data: 'email_address' },
+        { data: 'nationality' },
+        { data: 'occupation' },
+        { data: 'home_address' },
+        { data: 'office_address' },
+        { data: 'type_of_donor' },
+        { data: 'method_of_collection' },
+        { data: 'last_donation' },
+        { data: 'number_of_donations' },
         {
+
+
             data: null,
             orderable: false,
             searchable: false,

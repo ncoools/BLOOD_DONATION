@@ -5,10 +5,11 @@
   <meta name="csrf-token" content="<?= csrf_hash() ?>">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BMIS | Dashboard</title>
+  <title> BLOOD DONATION | Dashboard</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/fontawesome-free/css/all.min.css') ?>">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/jqvmap/jqvmap.min.css') ?>">
@@ -36,8 +37,8 @@
   <?= $this->renderSection('content') ?>
 
  <footer class="main-footer no-print">
-    <strong>Copyright &copy; 2025 <a href="#">Glenn IT Solutions</a> </strong>
-    All rights reserved.
+    <strong>CITY GOVERNMENT OF THE KABANKALAN <a href="#">City Health Office </a> </strong>
+    Rising City of the South.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> CI4.v1
     </div>

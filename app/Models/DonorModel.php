@@ -9,7 +9,23 @@ class DonorModel extends Model
     protected $table = 'donors';
     protected $primaryKey = 'donor_id';
 
-    protected $allowedFields = ['name', 'last_name', 'middle_name', 'gender', 'birthdate', 'occupation', 'citizenship', 'address', 'contact',];
+    protected $allowedFields = [ 'last_name',
+         'name',
+         'middle_name',
+         'birthdate',
+         'age',
+         'gender',
+         'civil_status',
+         'contact',
+         'email_address',
+         'nationality',
+         'occupation',
+         'home_address',
+         'office_address',
+         'type_of_donor',
+         'method_of_collection',
+         'last_donation',
+         'number_of_donations',];
 
     public function getRecords($start, $length, $searchValue = '')
     {

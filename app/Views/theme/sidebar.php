@@ -12,7 +12,7 @@
     top: 0;
     height: 100%;
     width: 4px;
-    background: orange;
+    background: green;
     border-radius: 0 3px 3px 0;
 
     transform: scaleY(0);
@@ -76,7 +76,7 @@ body.dark-mode .main-sidebar .nav-link:hover {
          alt="AdminLTE Logo" 
          class="brand-image img-circle elevation-3" 
          style="opacity: .8">
-    <span class="brand-text font-weight-light" style="color: white">SMART BMIS</span>
+    <span class="brand-text font-weight-light" style="color: white">DONATION</span>
 </div>
   <div class="sidebar">
     <nav class="mt-2">
@@ -100,7 +100,7 @@ body.dark-mode .main-sidebar .nav-link:hover {
      </a>
    </li>
    <li class="nav-item">
-      <a href="<?= base_url('donor') ?>" class="nav-link <?= is_active(1, 'donor') ?>">
+      <a href="?= base_url('donor') ?><" class="nav-link <?= is_active(1, 'donor') ?>">
         <i class="nav-icon fas fa-user-friends"></i>
         <p>Donors</p>
       </a>

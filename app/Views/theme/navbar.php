@@ -7,7 +7,7 @@
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link" style="color: #fff;">
+            <a href="index3.html" class="nav-link" style="color: #ffffff;">
                 Home
             </a>
         </li>
