@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/fontawesome-free/css/all.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/dist/css/adminlte.min.css') ?>">
+  <!-- CUSTOM CSS -->
+  <link rel="stylesheet" href="<?= base_url('assets/css/login.css') ?>">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">

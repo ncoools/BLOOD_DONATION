@@ -1,0 +1,24 @@
+body.login-page {
+    background: linear-gradient(135deg, #2ce55a, #1fbf52);
+  }
+
+  .login-card-body {
+    border-radius: 10px;
+    
+  }
+
+  .login-box {
+    width: 425px;
+    box-shadow: 0px 0px 14px -1px black;
+  }
+
+  .btn-primary {
+    background-color: #2ce567;
+    border-color: #24c259;
+  }
+
+  .btn-primary:hover {
+    transition: all ease-in-out 0.3s;
+    background-color: #21aa4c;
+    border-color: #189442;
+  }
