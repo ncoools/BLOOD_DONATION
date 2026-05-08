@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2026 at 08:53 AM
+-- Generation Time: May 08, 2026 at 12:08 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `blood_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `barangay`
+--
+
+CREATE TABLE `barangay` (
+  `barangay_id` int(11) UNSIGNED NOT NULL,
+  `barangay_name` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `barangay`
+--
+
+INSERT INTO `barangay` (`barangay_id`, `barangay_name`, `city`) VALUES
+(1, 'Chico', 'Bicol'),
+(2, 'Camansi', 'Kabankalan');
 
 -- --------------------------------------------------------
 
@@ -45,6 +65,20 @@ INSERT INTO `blood_types` (`bloodtype_id`, `bloodtype`) VALUES
 (8, 'AB-'),
 (9, 'O+'),
 (10, 'O-');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `donation_activities`
+--
+
+CREATE TABLE `donation_activities` (
+  `activity_id` int(11) UNSIGNED NOT NULL,
+  `activity_name` varchar(255) NOT NULL,
+  `activity_date` date NOT NULL,
+  `barangay_id` int(11) UNSIGNED DEFAULT NULL,
+  `location` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -585,7 +619,24 @@ INSERT INTO `tbl_logs` (`LOGID`, `USERID`, `ACTION`, `DATELOG`, `TIMELOG`, `user
 (231, '12', 'New Donor has been apdated: Mark', '2026-05-08', '12:04:24', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36', 'Nicole Rendon', 'UPDATED');
 INSERT INTO `tbl_logs` (`LOGID`, `USERID`, `ACTION`, `DATELOG`, `TIMELOG`, `user_ip_address`, `device_used`, `USER_NAME`, `identifier`) VALUES
 (232, '12', 'New Donor has been added: Amira', '2026-05-08', '12:07:05', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36', 'Nicole Rendon', 'ADD'),
-(233, '1', 'Login: Glenn Azuelo', '2026-05-08', '13:26:43', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGIN');
+(233, '1', 'Login: Glenn Azuelo', '2026-05-08', '13:26:43', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGIN'),
+(234, '1', 'Logout', '2026-05-08', '15:34:54', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGOUT'),
+(235, '1', 'Login: Glenn Azuelo', '2026-05-08', '15:35:01', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGIN'),
+(236, '1', 'New Barangay has been added: Chico', '2026-05-08', '15:37:55', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'ADD'),
+(237, '1', 'Login: Glenn Azuelo', '2026-05-08', '15:42:16', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGIN'),
+(238, '1', 'Logout', '2026-05-08', '15:45:18', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGOUT'),
+(239, '1', 'Login: Glenn Azuelo', '2026-05-08', '15:45:38', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGIN'),
+(240, '1', 'Login: Glenn Azuelo', '2026-05-08', '15:47:05', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGIN'),
+(241, '1', 'New Barangay has been added: Camansi', '2026-05-08', '15:48:21', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'ADD'),
+(242, '1', 'Logout', '2026-05-08', '15:51:31', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGOUT'),
+(243, '1', 'Logout', '2026-05-08', '15:55:00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGOUT'),
+(244, '1', 'Login: Glenn Azuelo', '2026-05-08', '15:56:04', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGIN'),
+(245, '1', 'Logout', '2026-05-08', '16:00:08', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGOUT'),
+(246, '1', 'Login: Glenn Azuelo', '2026-05-08', '16:00:16', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGIN'),
+(247, '1', 'Logout', '2026-05-08', '16:23:58', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGOUT'),
+(248, '1', 'Login: Glenn Azuelo', '2026-05-08', '17:54:57', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGIN'),
+(249, '1', 'Logout', '2026-05-08', '17:55:24', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGOUT'),
+(250, '1', 'Login: Glenn Azuelo', '2026-05-08', '17:58:37', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Glenn Azuelo', 'LOGIN');
 
 -- --------------------------------------------------------
 
@@ -621,10 +672,23 @@ INSERT INTO `users` (`id`, `uuid`, `email`, `password`, `role`, `status`, `name`
 --
 
 --
+-- Indexes for table `barangay`
+--
+ALTER TABLE `barangay`
+  ADD PRIMARY KEY (`barangay_id`);
+
+--
 -- Indexes for table `blood_types`
 --
 ALTER TABLE `blood_types`
   ADD PRIMARY KEY (`bloodtype_id`);
+
+--
+-- Indexes for table `donation_activities`
+--
+ALTER TABLE `donation_activities`
+  ADD PRIMARY KEY (`activity_id`),
+  ADD KEY `donation_activities_barangay_id_idx` (`barangay_id`);
 
 --
 -- Indexes for table `donors`
@@ -657,10 +721,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `barangay`
+--
+ALTER TABLE `barangay`
+  MODIFY `barangay_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `blood_types`
 --
 ALTER TABLE `blood_types`
   MODIFY `bloodtype_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `donation_activities`
+--
+ALTER TABLE `donation_activities`
+  MODIFY `activity_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `donors`
@@ -678,13 +754,23 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `LOGID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=234;
+  MODIFY `LOGID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `donation_activities`
+--
+ALTER TABLE `donation_activities`
+  ADD CONSTRAINT `donation_activities_barangay_id_fk` FOREIGN KEY (`barangay_id`) REFERENCES `barangay` (`barangay_id`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

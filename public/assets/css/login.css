@@ -10,9 +10,10 @@
     display:flex;
     justify-content: center;
     align-items: center;
-  background-image: url('../img/cho.jpg') !important;
+  background-image: linear-gradient(135deg, rgba(137, 255, 124, 0.512), rgba(216, 255, 40, 0.353)), url('../img/cho.jpg') !important;
   background-position: left;
   background-repeat: no-repeat;
+  background-size: cover;
 
 }
 

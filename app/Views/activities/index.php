@@ -24,7 +24,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">List of Blood Types</h3>
+              <h3 class="card-title">List of Donation Activities</h3>
               <div class="float-right">
                 <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#AddNewModal">
                   <i class="fa fa-plus-circle fa fw"></i> Add New
@@ -39,6 +39,7 @@
                     <th style="display:none;">id</th>
                     <th>Activity Name</th>
                     <th>Activity Date</th>
+                    <th>Barangay</th>
                     <th>Location</th>
                     <th>Actions</th>
                   </tr>
@@ -74,23 +75,26 @@
             <label>Activity Name</label>
             <input type="text" name="activity_name" class="form-control" required />
           </div>
-        </div>
-        
-        <div class="modal-body">
           <div class="form-group">
             <label>Activity Date</label>
             <input type="date" name="activity_date" class="form-control" required />
           </div>
-        </div>
-
-        <div class="modal-body">
+          <div class="form-group">
+            <label>Barangay</label>
+            <select class="form-control" name="barangay_id">
+              <option value="">Select barangay</option>
+              <?php foreach (($barangays ?? []) as $barangay): ?>
+              <option value="<?= esc($barangay['barangay_id']) ?>">
+                <?= esc($barangay['barangay_name']) ?><?= !empty($barangay['city']) ? ' - ' . esc($barangay['city']) : '' ?>
+              </option>
+              <?php endforeach; ?>
+            </select>
+          </div>
           <div class="form-group">
             <label>Location</label>
             <input type="text" name="location" class="form-control" required />
           </div>
         </div>
-
-        <!-- ✅ FIXED: closed modal-body -->
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -123,34 +127,31 @@
         </div>
 
         <div class="modal-body">
-          <input type="hidden" id="userId" name="activity_id">
-           <input type="hidden" id="userId" name="barangay_id">
+          <input type="hidden" id="activity_id" name="activity_id">
           <div class="form-group">
             <label>Activity Name</label>
             <input type="text" id="activity_name" name="activity_name" class="form-control" required />
           </div>
-        </div> 
-
-         <div class="modal-body">
-          <input type="hidden" id="userId" name="activity_id">
-           <input type="hidden" id="userId" name="barangay_id">
           <div class="form-group">
             <label>Activity Date</label>
-            <input type="date" id="activity_name" name="activity_name" class="form-control" required />
+            <input type="date" id="activity_date" name="activity_date" class="form-control" required />
           </div>
-        </div> 
-
-         <div class="modal-body">
-          <input type="hidden" id="userId" name="activity_id">
-           <input type="hidden" id="userId" name="barangay_id">
+          <div class="form-group">
+            <label>Barangay</label>
+            <select class="form-control" id="barangay_id" name="barangay_id">
+              <option value="">Select barangay</option>
+              <?php foreach (($barangays ?? []) as $barangay): ?>
+              <option value="<?= esc($barangay['barangay_id']) ?>">
+                <?= esc($barangay['barangay_name']) ?><?= !empty($barangay['city']) ? ' - ' . esc($barangay['city']) : '' ?>
+              </option>
+              <?php endforeach; ?>
+            </select>
+          </div>
           <div class="form-group">
             <label>Location</label>
             <input type="text" id="location" name="location" class="form-control" required />
           </div>
-        </div> 
-        
-        
-        <!-- ✅ properly closed -->
+        </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">

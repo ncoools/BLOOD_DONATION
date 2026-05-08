@@ -20,7 +20,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">
         <img src="<?= base_url('assets/img/download.jpg') ?>" width="35%">
-        <br>Sign in to start your session
+        <br>Sign in to manage blood donations, donor records. Health is Wealth
       </p>
 
       <?php $lockoutTime = $lockout ?? 0; ?>

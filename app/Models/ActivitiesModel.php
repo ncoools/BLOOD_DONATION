@@ -14,11 +14,17 @@ class ActivitiesModel extends Model
     public function getRecords($start, $length, $searchValue = '')
     {
         $builder = $this->builder();
-        $builder->select('*');
+        $builder->select('donation_activities.*, barangay.barangay_name, barangay.city');
+        $builder->join('barangay', 'barangay.barangay_id = donation_activities.barangay_id', 'left');
 
         if (!empty($searchValue)) {
             $builder->groupStart()
-                ->orLike('activity_id', $searchValue)
+                ->orLike('donation_activities.activity_id', $searchValue)
+                ->orLike('donation_activities.activity_name', $searchValue)
+                ->orLike('donation_activities.activity_date', $searchValue)
+                ->orLike('donation_activities.location', $searchValue)
+                ->orLike('barangay.barangay_name', $searchValue)
+                ->orLike('barangay.city', $searchValue)
                 ->groupEnd();
         }
 

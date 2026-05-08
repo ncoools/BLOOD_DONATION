@@ -17,12 +17,12 @@ $('#addUserForm').on('submit', function (e) {
             if (response.status === 'success') {
                 $('#AddNewModal').modal('hide');
                 $('#addUserForm')[0].reset();
-                showToast('success', 'Bloodtype added successfully!');
+                showToast('success', 'Activity added successfully!');
                 setTimeout(() => {
                     location.reload();
                 }, 1000); 
             } else {
-                showToast('error', response.message || 'Failed to add bloodtype.');
+                showToast('error', response.message || 'Failed to add activity.');
             }
         },
         error: function () {
@@ -40,17 +40,18 @@ $(document).on('click', '.edit-btn', function () {
     success: function (response) {
         if (response.data) {
             $('#editUserModal #activity_name').val(response.data.activity_name);
-            $('#editUserModal #userId').val(response.data.activity_id);
+            $('#editUserModal #activity_id').val(response.data.activity_id);
             $('#editUserModal #activity_date').val(response.data.activity_date);
+            $('#editUserModal #barangay_id').val(response.data.barangay_id || '');
             $('#editUserModal #location').val(response.data.location);
 
             $('#editUserModal').modal('show');
         } else {
-            alert('Error fetching bloodtype data');
+            alert('Error fetching activity data');
         }
     },
     error: function () {
-        alert('Error fetching bloodtype data');
+        alert('Error fetching activity data');
     }
 });
 });
@@ -68,7 +69,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success) {
                     $('#editUserModal').modal('hide');
-                    showToast('success', 'Bloodtype Updated successfully!');
+                    showToast('success', 'Activity updated successfully!');
                     setTimeout(() => location.reload(), 1000);
                 } else {
                     alert('Error updating: ' + (response.message || 'Unknown error'));
@@ -87,9 +88,9 @@ $(document).on('click', '.deleteUserBtn', function () {
     const csrfName = $('meta[name="csrf-name"]').attr('content');
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-    if (confirm('Are you sure you want to delete this bloodtype?')) {
+    if (confirm('Are you sure you want to delete this activity?')) {
         $.ajax({
-            url: baseUrl + 'donation_activities/delete/' + userId,
+            url: baseUrl + 'activities/delete/' + userId,
             method: 'POST', 
             data: {
                 _method: 'DELETE',
@@ -97,7 +98,7 @@ $(document).on('click', '.deleteUserBtn', function () {
             },
             success: function (response) {
                 if (response.success) {
-                    showToast('success', 'Bloodtype deleted successfully.');
+                    showToast('success', 'Activity deleted successfully.');
                     setTimeout(() => location.reload(), 1000);
                 } else {
                     alert(response.message || 'Failed to delete.');
@@ -113,8 +114,7 @@ $(document).on('click', '.deleteUserBtn', function () {
 $(document).ready(function () {
     const $table = $('#example1');
 
-    const csrfName = 'csrf_test_name'; 
-    const csrfToken = $('input[name="' + csrfName + '"]').val();
+    const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
     $table.DataTable({
         processing: true,
@@ -131,6 +131,7 @@ $(document).ready(function () {
         { data: 'activity_id', visible: false },
         { data: 'activity_name' },
         { data: 'activity_date' },
+        { data: 'barangay_name', defaultContent: '' },
         { data: 'location' },
       
         {

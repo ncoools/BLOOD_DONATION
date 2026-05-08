@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Models\BarangayModel;
 use App\Models\LogModel;
 use App\Models\ActivitiesModel;
 
@@ -10,18 +11,22 @@ class Activities extends Controller
 {
     public function index(){
         $model = new ActivitiesModel();
-        $data[' activities'] = $model->findAll();
+        $barangayModel = new BarangayModel();
+
+        $data['activities'] = $model->findAll();
+        $data['barangays'] = $barangayModel->orderBy('barangay_name', 'ASC')->findAll();
+
         return view('activities/index', $data);
     }
 
     public function save(){
         $activity_name = $this->request->getPost('activity_name');
         $activity_date = $this->request->getPost('activity_date');
-        $barangay_id = $this->request->getPost('barangay_id');
+        $barangay_id = $this->request->getPost('barangay_id') ?: null;
         $location = $this->request->getPost('location');
        
 
-        $userModel = new \App\Models\ActivitiesModel();
+        $activitiesModel = new ActivitiesModel();
         $logModel = new LogModel();
 
         $data = [
@@ -34,11 +39,11 @@ class Activities extends Controller
             	
         ];
 
-        if ($userModel->insert($data)) {
-            $logModel->addLog('New Activities has been added: ' . $activity_name, 'ADD');
+        if ($activitiesModel->insert($data)) {
+            $logModel->addLog('New Activity has been added: ' . $activity_name, 'ADD');
             return $this->response->setJSON(['status' => 'success']);
         } else {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to save Activities']);
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to save activity']);
         }
     }
 
@@ -48,7 +53,7 @@ class Activities extends Controller
         $userId = $this->request->getPost('activity_id');
         $activity_name = $this->request->getPost('activity_name');
         $activity_date = $this->request->getPost('activity_date');
-        $barangay_id = $this->request->getPost('barangay_id');
+        $barangay_id = $this->request->getPost('barangay_id') ?: null;
         $location = $this->request->getPost('location');
      
 
@@ -63,7 +68,7 @@ class Activities extends Controller
         $updated = $model->update($userId, $userData);
 
         if ($updated) {
-            $logModel->addLog('New Activities has been apdated: ' . $activity_name, 'UPDATED');
+            $logModel->addLog('Activity has been updated: ' . $activity_name, 'UPDATED');
             return $this->response->setJSON([
                 'success' => true,
                 'message' => 'Activities updated successfully.'
@@ -71,19 +76,19 @@ class Activities extends Controller
         } else {
             return $this->response->setJSON([
                 'success' => false,
-                'message' => 'Error updating user.'
+                'message' => 'Error updating activity.'
             ]);
         }
     }
 
     public function edit($id){
         $model = new ActivitiesModel();
-    $user = $model->find($id); // Fetch user by ID
+    $activity = $model->find($id);
 
-    if ($user) {
-        return $this->response->setJSON(['data' => $user]); // Return user data as JSON
+    if ($activity) {
+        return $this->response->setJSON(['data' => $activity]);
     } else {
-        return $this->response->setStatusCode(404)->setJSON(['error' => 'User not found']);
+        return $this->response->setStatusCode(404)->setJSON(['error' => 'Activity not found']);
     }
 }
 
@@ -92,16 +97,16 @@ public function delete($id){
     $logModel = new LogModel();
     $user = $model->find($id);
     if (!$user) {
-        return $this->response->setJSON(['success' => false, 'message' => 'Bloodtype not found.']);
+        return $this->response->setJSON(['success' => false, 'message' => 'Activity not found.']);
     }
 
     $deleted = $model->delete($id);
 
     if ($deleted) {
-        $logModel->addLog('Delete user', 'DELETED');
-        return $this->response->setJSON(['success' => true, 'message' => 'Bloodtype deleted successfully.']);
+        $logModel->addLog('Deleted activity: ' . ($user['activity_name'] ?? ''), 'DELETED');
+        return $this->response->setJSON(['success' => true, 'message' => 'Activity deleted successfully.']);
     } else {
-        return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete Bloodtype.']);
+        return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete activity.']);
     }
 }
 

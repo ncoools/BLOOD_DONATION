@@ -22,7 +22,7 @@ $('#addUserForm').on('submit', function (e) {
                     location.reload();
                 }, 1000); 
             } else {
-                showToast('error', response.message || 'Failed to add bloodtype.');
+                showToast('error', response.message || 'Failed to add barangay.');
             }
         },
         error: function () {
@@ -39,13 +39,12 @@ $(document).on('click', '.edit-btn', function () {
     dataType: 'json',
     success: function (response) {
         if (response.data) {
-            $('#editUserModal #barangay').val(response.data.barangay);
             $('#editUserModal #userId').val(response.data.barangay_id);
             $('#editUserModal #barangay_name').val(response.data.barangay_name);
             $('#editUserModal #city').val(response.data.city);
             $('#editUserModal').modal('show');
         } else {
-            alert('Error fetching bloodtype data');
+            alert('Error fetching barangay data');
         }
     },
     error: function () {
@@ -86,7 +85,7 @@ $(document).on('click', '.deleteUserBtn', function () {
     const csrfName = $('meta[name="csrf-name"]').attr('content');
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-    if (confirm('Are you sure you want to delete this bloodtype?')) {
+    if (confirm('Are you sure you want to delete this barangay?')) {
         $.ajax({
             url: baseUrl + 'barangay/delete/' + userId,
             method: 'POST', 
@@ -112,8 +111,7 @@ $(document).on('click', '.deleteUserBtn', function () {
 $(document).ready(function () {
     const $table = $('#example1');
 
-    const csrfName = 'csrf_test_name'; 
-    const csrfToken = $('input[name="' + csrfName + '"]').val();
+    const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
     $table.DataTable({
         processing: true,

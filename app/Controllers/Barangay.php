@@ -19,7 +19,7 @@ class Barangay extends Controller
          $city = $this->request->getPost('city');
        
 
-        $userModel = new \App\Models\BarangayModel();
+        $barangayModel = new BarangayModel();
         $logModel = new LogModel();
 
         $data = [
@@ -27,7 +27,7 @@ class Barangay extends Controller
             'city'       => $city,
         ];
 
-        if ($userModel->insert($data)) {
+        if ($barangayModel->insert($data)) {
             $logModel->addLog('New Barangay has been added: ' . $barangay_name, 'ADD');
             return $this->response->setJSON(['status' => 'success']);
         } else {
@@ -52,7 +52,7 @@ class Barangay extends Controller
         $updated = $model->update($userId, $userData);
 
         if ($updated) {
-            $logModel->addLog('New Barangay has been apdated: ' . $barangay_name, 'UPDATED');
+            $logModel->addLog('Barangay has been updated: ' . $barangay_name, 'UPDATED');
             return $this->response->setJSON([
                 'success' => true,
                 'message' => 'Barangay updated successfully.'
@@ -60,7 +60,7 @@ class Barangay extends Controller
         } else {
             return $this->response->setJSON([
                 'success' => false,
-                'message' => 'Error updating user.'
+                'message' => 'Error updating barangay.'
             ]);
         }
     }
@@ -87,7 +87,7 @@ public function delete($id){
     $deleted = $model->delete($id);
 
     if ($deleted) {
-        $logModel->addLog('Delete user', 'DELETED');
+        $logModel->addLog('Deleted barangay: ' . ($user['barangay_name'] ?? ''), 'DELETED');
         return $this->response->setJSON(['success' => true, 'message' => 'Barangay deleted successfully.']);
     } else {
         return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete Barangay.']);

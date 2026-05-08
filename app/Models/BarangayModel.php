@@ -18,7 +18,9 @@ class BarangayModel extends Model
 
         if (!empty($searchValue)) {
             $builder->groupStart()
-                ->orLike('barangay', $searchValue)
+                ->orLike('barangay_id', $searchValue)
+                ->orLike('barangay_name', $searchValue)
+                ->orLike('city', $searchValue)
                 ->groupEnd();
         }
 
