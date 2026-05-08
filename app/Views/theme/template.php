@@ -46,9 +46,6 @@
     <footer class="main-footer no-print">
       <strong>CITY GOVERNMENT OF THE KABANKALAN <a href="#">City Health Office </a> </strong>
       Rising City of the South.
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> CI4.v1
-      </div>
     </footer>
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Add padding so content isn’t stuck to edges -->
@@ -107,6 +104,7 @@
   const navbar = document.getElementById('mainNavbar');
   const sidebar = document.getElementById('mainSidebar');
   const brandLink = document.getElementById('brandLink');
+
 
   // Apply saved theme on load
   let savedTheme = localStorage.getItem('adminlteTheme');

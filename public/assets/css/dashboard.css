@@ -1,7 +1,7 @@
 .small-box {
     border-radius: 12px;
     box-shadow: 0px 0px 15px -1px rgba(0,0,0,0.15);
-    background: linear-gradient(135deg, #2ce52c, #bcbf1f);
+    background: linear-gradient(#1A3C34, #8DA399, #EAF1B1);
 }
 
 .small-box {
@@ -9,14 +9,23 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.small-box:hover {
+.small-box:hover .small-box-bacground{
     transform: translateY(-5px);
+    background-size: 300px;
+}
+
+.small-box-grid:hover > .small-box:not(:hover) {
+    transform:scale(.9);
+}
+.small-box-grid:hover > .small-box:not(:hover) .small-box-bacground,
+.small-box-grid:hover > .small-box:not(:hover) .small-box-category {
+    filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
 }
 
 .small-box .icon {
     opacity: 0.3;
     transition: opacity 0.3s ease-in-out;
-    color: rgba(255,255,255,0.4);
+    color: #8DA399;
 }
 
 .small-box:hover .icon {
@@ -26,22 +35,6 @@
 
 .small-box-footer {
     font-weight: 600;
-}
-
-.small-box.bg-primary:hover {
-    background-color: rgb(253, 44, 44) !important;
-}
-
-.small-box.bg-info:hover {
-    background-color: #1dc4de  !important;
-}
-
-.small-box.bg-warning:hover {
-    background-color: #eeff07 !important;
-}
-
-.small-box.bg-danger:hover {
-    background-color: #eb172c !important;
 }
 
 /*
@@ -54,16 +47,60 @@
    /* color: #171717; */
 }
 
+
+
+#mainSidebar{
+        position:absolute;
+        padding: 15px 10px;
+        background: #8DA399;
+        border-radius: 10px;
+        backdrop-filter: blur (15px);
+        box-shadow: 0 15px 35px #8DA399;
+        border: 0.5px solid #91ad84;
+
+}
 #mainNavbar {
-    background-color: #17c022 !important;
+    background-color: #4d6a4f !important;
+    overflow: hidden; flex: 0 0 80px;
+    border-radius: 10px; cursor: pointer;
+    border: 1.2px solid #8DA399;
+     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.4),
+      -2px -5px 10px rgba(0, 0, 0, 0.1);
 }
 
+#themeToggle{
+    background-color: #00a700 !important;
+    overflow: hidden; flex: 0 0 80px;
+    border-radius: 10px; cursor: pointer;
+    border: 1.2px solid white;
+     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.4),
+      -2px -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
 #brandLink {
-    background-color: #17c022 !important;
+    background-color: #8DA399 !important;
 }
 
 #brandLink .brand-text {
     color: white !important;
     font-weight: 800;
+}
+
+
+
+
+
+/* Print Styles */
+@media print {
+    header, footer, nav {
+        display: none;
+    }
+    body {
+        background: rgba(125, 157, 169, 0.063);
+    }
 }
 

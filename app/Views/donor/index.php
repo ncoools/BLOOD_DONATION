@@ -20,8 +20,8 @@
 
   <section class="content">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
+      <div class="row-100">
+        <div class="col-20">
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">List of Donors</h3>
@@ -37,6 +37,8 @@
                   <tr>
                     <th>No.</th>
                     <th style="display:none;">id</th>
+                    <th>Date</th>
+                    <th>Venue</th>
                     <th>Last Name</th>
                     <th>Name</th>
                     <th>Middle Name</th>
@@ -85,6 +87,16 @@
 
         <div class="modal-body">
           <div class="form-group">
+            <label>Date</label>
+            <input type="text" name="date" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Venue</label>
+            <input type="text" name="venue" class="form-control" required />
+          </div>
+
+          <div class="form-group">
             <label>Last Name</label>
             <input type="text" name="last_name" class="form-control" required />
           </div>
@@ -119,7 +131,14 @@
 
           <div class="form-group">
             <label>Civil Status</label>
-            <input type="text" name="civil_status" class="form-control" required />
+            <select class="form-control" name="civil_status">
+              <option value="Single ">Single </option>
+              <option value="Married ">Married </option>
+              <option value="Widowed">Widowed</option>
+              <option value="Legally Separated  ">Legally Separated  </option>
+              <option value=" Annulled/Void  "> Annulled/Void  </option>
+              <option value="  Divorced ">  Divorced </option>
+            </select>
           </div>
 
           <div class="form-group">
@@ -139,8 +158,17 @@
 
           <div class="form-group">
            <label>Occupation</label>
-           <input type="text" name="occupation" class="form-control" required />
+           <select class="form-control" name="occupation">
+              <option value=" Employed "> Employed </option>
+              <option value="Unemployed ">Unemployed </option>
+              <option value="Student / Not in the Labor Force">Student / Not in the Labor Force</option>
+              <option value="Underemployed">Underemployed</option>
+            </select>
          </div>
+        
+
+
+
 
           <div class="form-group">
             <label>Home Address</label>
@@ -164,7 +192,7 @@
 
           <div class="form-group">
             <label>Last Donation</label>
-            <input type="text" name="last_donation" class="form-control" required />
+            <input type="date" name="last_donation" class="form-control" required />
           </div>
 
           <div class="form-group">
@@ -211,6 +239,16 @@
           <input type="hidden" id="userId" name="donor_id">
 
           <div class="form-group">
+            <label>Date</label>
+            <input type="text" id="date" name="date" class="form-control" required />
+          </div>
+          
+          <div class="form-group">
+            <label>Venue</label>
+            <input type="text" id="venue" name="venue" class="form-control" required />
+          </div>
+
+          <div class="form-group">
             <label>Last Name</label>
             <input type="text" id="last_name" name="last_name" class="form-control" required />
           </div>
@@ -245,7 +283,14 @@
 
         <div class="form-group">
             <label>Civil Status</label>
-            <input type="text" id="civil_status" name="civil_stattus" class="form-control" required />
+            <select class="form-control" name="civil_status">
+              <option value="Single ">Single </option>
+              <option value="Married ">Married </option>
+              <option value="Widowed">Widowed</option>
+              <option value="Legally Separated  ">Legally Separated  </option>
+              <option value=" Annulled/Void  "> Annulled/Void  </option>
+              <option value="  Divorced ">  Divorced </option>
+            </select>
           </div>
 
           <div class="form-group">
@@ -265,7 +310,13 @@
 
            <div class="form-group">
             <label>Occupation</label>
-            <input type="text" id="occupation" name="occupation" class="form-control" required />
+             <select class="form-control" name="occupation">
+              <option value=" Employed "> Employed </option>
+              <option value="Unemployed ">Unemployed </option>
+              <option value="Student / Not in the Labor Force">Student / Not in the Labor Force</option>
+              <option value="Underemployed">Underemployed</option>
+            </select>
+          
           </div>
 
            <div class="form-group">
@@ -275,7 +326,7 @@
 
           <div class="form-group">
             <label>Office Address</label>
-            <input type="text" id="office_adress" name="office_adress" class="form-control" required />
+            <input type="text" id="office_adress" name="office_address" class="form-control" />
           </div>
 
           <div class="form-group">
@@ -290,7 +341,7 @@
 
            <div class="form-group">
             <label>Last Donation</label>
-            <input type="text" id="last_donation" name="last_donation" class="form-control" required />
+            <input type="date" id="last_donation" name="last_donation" class="form-control" required />
           </div>
 
             <div class="form-group">

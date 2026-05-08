@@ -36,29 +36,23 @@ $routes->post('bloodtype/update', 'Bloodtype::update');
 $routes->delete('bloodtype/delete/(:num)', 'Bloodtype::delete/$1');
 $routes->post('bloodtype/fetchRecords', 'Bloodtype::fetchRecords');
 
-// Person routes
-$routes->get('/person', 'Person::index');
-$routes->post('person/save', 'Person::save');
-$routes->get('person/edit/(:segment)', 'Person::edit/$1');
-$routes->post('person/update', 'Person::update');
-$routes->delete('person/delete/(:num)', 'Person::delete/$1');
-$routes->post('person/fetchRecords', 'Person::fetchRecords');
+// Barangay routes
+$routes->get('/barangay', 'Barangay::index');
+$routes->post('barangay/save', 'Barangay::save');
+$routes->get('barangay/edit/(:segment)', 'Barangay::edit/$1');
+$routes->post('barangay/update', 'Barangay::update');
+$routes->delete('barangay/delete/(:num)', 'Barangay::delete/$1');
+$routes->post('barangay/fetchRecords', 'Barangay::fetchRecords');
 
-// Profiling routes
-$routes->get('/profiling', 'Profiling::index');
-$routes->post('profiling/save', 'Profiling::save');
-$routes->get('profiling/edit/(:segment)', 'Profiling::edit/$1');
-$routes->post('profiling/update', 'Profiling::update');
-$routes->delete('profiling/delete/(:num)', 'Profiling::delete/$1');
-$routes->post('profiling/fetchRecords', 'Profiling::fetchRecords');
+// Activities routes
+$routes->get('/activities', 'Activities::index');
+$routes->post('activities/save', 'Activities::save');
+$routes->get('activities/edit/(:segment)', 'Activities::edit/$1');
+$routes->post('activities/update', 'Activities::update');
+$routes->delete('activities/delete/(:num)', 'Activities::delete/$1');
+$routes->post('activities/fetchRecords', 'Activities::fetchRecords');
 
-// Student routes
-$routes->get('/student', 'Student::index');
-$routes->post('student/save', 'Student::save');
-$routes->get('student/edit/(:segment)', 'Student::edit/$1');
-$routes->post('student/update', 'Student::update');
-$routes->delete('student/delete/(:num)', 'Student::delete/$1');
-$routes->post('student/fetchRecords', 'Student::fetchRecords');
 
 // Logs routes for admin
 $routes->get('/log', 'Logs::log');
+$routes->get('dashboard/liveData', 'Dashboard::liveData');

@@ -4,31 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class DonorModel extends Model
+class ActivitiesModel extends Model
 {
-    protected $table = 'donors';
-    protected $primaryKey = 'donor_id';
+    protected $table = 'donation_activities';
+    protected $primaryKey = 'activity_id';
 
-    protected $allowedFields = 
-       ['date',
-        'venue',
-        'last_name',
-         'name',
-         'middle_name',
-         'birthdate',
-         'age',
-         'gender',
-         'civil_status',
-         'contact',
-         'email_address',
-         'nationality',
-         'occupation',
-         'home_address',
-         'office_address',
-         'type_of_donor',
-         'method_of_collection',
-         'last_donation',
-         'number_of_donations',];
+    protected $allowedFields = ['activity_name'	,'activity_date','barangay_id'	,'location'];
 
     public function getRecords($start, $length, $searchValue = '')
     {
@@ -37,7 +18,7 @@ class DonorModel extends Model
 
         if (!empty($searchValue)) {
             $builder->groupStart()
-                ->orLike('last_name', $searchValue)
+                ->orLike('activity_id', $searchValue)
                 ->groupEnd();
         }
 

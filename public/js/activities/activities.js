@@ -9,7 +9,7 @@ function showToast(type, message) {
 $('#addUserForm').on('submit', function (e) {
     e.preventDefault();
     $.ajax({
-        url: baseUrl + 'donor/save',
+        url: baseUrl + 'activities/save',
         method: 'POST',
         data: $(this).serialize(),
         dataType: 'json',
@@ -17,12 +17,12 @@ $('#addUserForm').on('submit', function (e) {
             if (response.status === 'success') {
                 $('#AddNewModal').modal('hide');
                 $('#addUserForm')[0].reset();
-                showToast('success', 'Person added successfully!');
+                showToast('success', 'Bloodtype added successfully!');
                 setTimeout(() => {
                     location.reload();
                 }, 1000); 
             } else {
-                showToast('error', response.message || 'Failed to add donor.');
+                showToast('error', response.message || 'Failed to add bloodtype.');
             }
         },
         error: function () {
@@ -31,42 +31,26 @@ $('#addUserForm').on('submit', function (e) {
     });
 });
 
-
 $(document).on('click', '.edit-btn', function () {
    const userId = $(this).data('id'); 
    $.ajax({
-    url: baseUrl + 'donor/edit/' + userId,
+    url: baseUrl + 'activities/edit/' + userId,
     method: 'GET',
     dataType: 'json',
     success: function (response) {
         if (response.data) {
-            $('#editUserModal #date').val(response.data.date);
-            $('#editUserModal #userId').val(response.data.donor_id);
-            $('#editUserModal #venue').val(response.data.venue);
-            $('#editUserModal #last_name').val(response.data.last_name);
-            $('#editUserModal #name').val(response.data.name);
-            $('#editUserModal #middle_name').val(response.data.middle_name);
-            $('#editUserModal #birthdate').val(response.data.birthdate);
-            $('#editUserModal #age').val(response.data.age);
-            $('#editUserModal #gender').val(response.data.gender);
-            $('#editUserModal #civil_status').val(response.data.civil_status);
-            $('#editUserModal #contact').val(response.data.contact);
-            $('#editUserModal #email_address').val(response.data.email_address);
-            $('#editUserModal #nationality').val(response.data.nationality);
-            $('#editUserModal #occupation').val(response.data.occupation);
-            $('#editUserModal #home_address').val(response.data.home_address);
-            $('#editUserModal #office_address').val(response.data.office_address);
-            $('#editUserModal #type_of_donor').val(response.data.type_of_donor);
-            $('#editUserModal #method_of_collection').val(response.data.method_of_collection);
-            $('#editUserModal #last_donation').val(response.data.last_donation);
-            $('#editUserModal #number_of_donations').val(response.data.number_of_donations);
+            $('#editUserModal #activity_name').val(response.data.activity_name);
+            $('#editUserModal #userId').val(response.data.activity_id);
+            $('#editUserModal #activity_date').val(response.data.activity_date);
+            $('#editUserModal #location').val(response.data.location);
+
             $('#editUserModal').modal('show');
         } else {
-            alert('Error fetching donor data');
+            alert('Error fetching bloodtype data');
         }
     },
     error: function () {
-        alert('Error fetching donor data');
+        alert('Error fetching bloodtype data');
     }
 });
 });
@@ -77,14 +61,14 @@ $(document).ready(function () {
         e.preventDefault(); 
 
         $.ajax({
-            url: baseUrl + 'donor/update',
+            url: baseUrl + 'activities/update',
             method: 'POST',
             data: $(this).serialize(),
             dataType: 'json',
             success: function (response) {
                 if (response.success) {
                     $('#editUserModal').modal('hide');
-                    showToast('success', 'Person Updated successfully!');
+                    showToast('success', 'Bloodtype Updated successfully!');
                     setTimeout(() => location.reload(), 1000);
                 } else {
                     alert('Error updating: ' + (response.message || 'Unknown error'));
@@ -103,9 +87,9 @@ $(document).on('click', '.deleteUserBtn', function () {
     const csrfName = $('meta[name="csrf-name"]').attr('content');
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-    if (confirm('Are you sure you want to delete this donor?')) {
+    if (confirm('Are you sure you want to delete this bloodtype?')) {
         $.ajax({
-            url: baseUrl + 'donor/delete/' + userId,
+            url: baseUrl + 'donation_activities/delete/' + userId,
             method: 'POST', 
             data: {
                 _method: 'DELETE',
@@ -113,7 +97,7 @@ $(document).on('click', '.deleteUserBtn', function () {
             },
             success: function (response) {
                 if (response.success) {
-                    showToast('success', 'Person deleted successfully.');
+                    showToast('success', 'Bloodtype deleted successfully.');
                     setTimeout(() => location.reload(), 1000);
                 } else {
                     alert(response.message || 'Failed to delete.');
@@ -136,7 +120,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: baseUrl + 'donor/fetchRecords',
+            url: baseUrl + 'activities/fetchRecords',
             type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrfToken
@@ -144,38 +128,21 @@ $(document).ready(function () {
         },
         columns: [
         { data: 'row_number' },
-        { data: 'donor_id', visible: false },
-        { data: 'date' },
-        { data: 'venue' },
-        { data: 'last_name' },
-        { data: 'name' },
-        { data: 'middle_name' },
-        { data: 'birthdate' },
-        { data: 'age' },
-        { data: 'gender' },
-        { data: 'civil_status' },
-        { data: 'contact' },
-        { data: 'email_address' },
-        { data: 'nationality' },
-        { data: 'occupation' },
-        { data: 'home_address' },
-        { data: 'office_address' },
-        { data: 'type_of_donor' },
-        { data: 'method_of_collection' },
-        { data: 'last_donation' },
-        { data: 'number_of_donations' },
+        { data: 'activity_id', visible: false },
+        { data: 'activity_name' },
+        { data: 'activity_date' },
+        { data: 'location' },
+      
         {
-
-
             data: null,
             orderable: false,
             searchable: false,
             render: function (data, type, row) {
                 return `
-                <button class="btn btn-sm btn-warning edit-btn" data-id="${row.donor_id}">
+                <button class="btn btn-sm btn-warning edit-btn" data-id="${row.activity_id}">
                 <i class="far fa-edit"></i>
                 </button>
-                <button class="btn btn-sm btn-danger deleteUserBtn" data-id="${row.donor_id}">
+                <button class="btn btn-sm btn-danger deleteUserBtn" data-id="${row.activity_id}">
                 <i class="fas fa-trash-alt"></i>
                 </button>
                 `;

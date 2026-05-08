@@ -67,6 +67,26 @@ body.dark-mode .main-sidebar .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.1) !important; /* slightly lighter bg on hover/active */
 }
 
+.content-header h1 {
+  font-weight: 500;
+  /* color:  rgba(132, 177, 95, 0.1); */
+}
+
+#mainNavbar {
+  background-color: #79bf6b81;
+}
+
+#brandLink {
+  background-color: #9bb097;
+
+}
+
+#brandLink .brand-text {
+  color: #fff;
+  font-weight: 800;
+}
+
+
 </style>
 
 
@@ -93,24 +113,42 @@ body.dark-mode .main-sidebar .nav-link:hover {
         <p>Activity Logs</p>
       </a>
     </li>
+
     <li class="nav-item">
-     <a href="<?= base_url('users') ?>" class="nav-link <?= is_active(1, 'users') ?>">
-       <i class="nav-icon fas fa-user-lock"></i>
-       <p>User Accounts</p>
+     <a href="<?= base_url('barangay') ?>" class="nav-link <?= is_active(1, 'barangay') ?>">
+       <i class="nav-icon fas fa-building"></i>
+       <p>Barangay</p>
      </a>
    </li>
+
    <li class="nav-item">
-      <a href="?= base_url('donor') ?><" class="nav-link <?= is_active(1, 'donor') ?>">
-        <i class="nav-icon fas fa-user-friends"></i>
-        <p>Donors</p>
-      </a>
-    </li>
-     <li class="nav-item">
-      <a href="<?= base_url('bloodtype') ?>" class="nav-link <?= is_active(1, 'bloodtype') ?>">
-        <i class="nav-icon fas fa-user-friends"></i>
-        <p>Blood Types</p>
-      </a>
-    </li>
+    <a href="<?= base_url('bloodtype') ?>" class="nav-link <?= is_active(1, 'bloodtype') ?>">
+      <i class="nav-icon fas fa-solid fa-droplet"></i>
+      <p>Blood Types</p>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a href="<?= base_url('activities') ?>" class="nav-link <?= is_active(1, 'activities') ?>">
+      <i class="nav-icon fas fa-hand-holding-heart"></i>
+      <p>Donation Activities</p>
+    </a>
+  </li>
+  
+  <li class="nav-item">
+    <a href="?= base_url('donor') ?><" class="nav-link <?= is_active(1, 'donor') ?>">
+      <i class="nav-icon fas fa-user-friends"></i>
+      <p>Donors</p>
+    </a>
+  </li>
+  
+  <li class="nav-item">
+   <a href="<?= base_url('users') ?>" class="nav-link <?= is_active(1, 'users') ?>">
+     <i class="nav-icon fas fa-user-lock"></i>
+     <p>User Accounts</p>
+   </a>
+ </li>
+
   </ul>
 </nav>
 </div>

@@ -11,6 +11,9 @@
   <!-- CUSTOM CSS -->
   <link rel="stylesheet" href="<?= base_url('assets/css/login.css') ?>">
 </head>
+<nav> 
+
+
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="card">
@@ -66,6 +69,7 @@
     </div>
   </div>
 </div>
+</nav>
 
 <!-- Scripts -->
 <script src="<?= base_url('assets/adminlte/plugins/jquery/jquery.min.js') ?>"></script>

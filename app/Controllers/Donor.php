@@ -15,6 +15,8 @@ class Donor extends Controller
     }
 
     public function save(){
+        $date = $this->request->getPost('date');
+        $venue = $this->request->getPost('venue');
         $last_name = $this->request->getPost('last_name');
         $name = $this->request->getPost('name');
         $middle_name = $this->request->getPost('middle_name');
@@ -38,6 +40,8 @@ class Donor extends Controller
         $logModel = new LogModel();
 
         $data = [
+        'date' => $date,
+        'venue' => $venue,
         'last_name' => $last_name,
         'name'=>  $name,
         'middle_name'=> $middle_name,
@@ -67,6 +71,8 @@ class Donor extends Controller
         $model = new DonorModel();
         $logModel = new LogModel();
         $userId = $this->request->getPost('donor_id');
+        $date = $this->request->getPost('date');
+        $venue = $this->request->getPost('venue');
         $last_name = $this->request->getPost('last_name');
         $name = $this->request->getPost('name');
         $middle_name = $this->request->getPost('middle_name');
@@ -87,6 +93,8 @@ class Donor extends Controller
         
 
         $userData = [
+        'date' => $date,
+        'venue' => $venue,
         'last_name' => $last_name,
         'name'=>  $name,
         'middle_name'=> $middle_name,
@@ -157,7 +165,7 @@ public function fetchRecords()
     $model = new \App\Models\DonorModel();
 
     $start = $request->getPost('start') ?? 0;
-    $length = $request->getPost('length') ?? 10;
+    $length = $request->getPost('length') ?? 1000;
     $searchValue = $request->getPost('search')['value'] ?? '';
 
     $totalRecords = $model->countAll();
