@@ -11,6 +11,47 @@
                 <i class="fas fa-home mr-1"></i> Home
             </a>
         </li>
+
+         <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= base_url('log') ?>" class="nav-link">
+                <i class="fas fa-history mr-1"></i> Logs
+            </a>
+        </li>
+
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= base_url('donor') ?>" class="nav-link">
+                <i class="fas fa-user-friends mr-1"></i> Donors
+            </a>
+        </li>
+
+       
+
+        
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= base_url('bloodtype') ?>" class="nav-link">
+                <i class="fas fa-tint mr-1"></i> Blood Types
+            </a>
+        </li>
+
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= base_url('barangay') ?>" class="nav-link">
+                <i class="fas fa-building mr-1"></i> Barangay
+            </a>
+        </li>
+
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= base_url('activities') ?>" class="nav-link">
+                <i class="fas fa-hand-holding-heart mr-1"></i> Donation Activities
+            </a>
+        </li>
+
+        
+
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="<?= base_url('users') ?>" class="nav-link">
+                <i class="fas fa-user-lock mr-1"></i> Accounts
+            </a>
+        </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">

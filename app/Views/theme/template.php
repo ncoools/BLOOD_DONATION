@@ -65,6 +65,18 @@
 
   </div>
   <script src="<?= base_url('assets/adminlte/plugins/jquery/jquery.min.js') ?>"></script>
+  <script>
+    (function () {
+      const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
+      if (!csrfTokenMeta || typeof jQuery === 'undefined') return;
+
+      $.ajaxSetup({
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRF-TOKEN', csrfTokenMeta.getAttribute('content') || '');
+        }
+      });
+    })();
+  </script>
   <script src="<?= base_url('assets/adminlte/plugins/jquery-ui/jquery-ui.min.js') ?>"></script>
   <script>
     $.widget.bridge('uibutton', $.ui.button)
@@ -81,7 +93,6 @@
   <script src="<?= base_url('assets/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
   <script src="<?= base_url('assets/adminlte/dist/js/adminlte.js') ?>"></script>
 
-  <script src="<?= base_url('assets/adminlte/dist/js/pages/dashboard.js') ?>"></script>
   <script src="<?= base_url('assets/adminlte/plugins/datatables/jquery.dataTables.min.js') ?>"></script>
   <script src="<?= base_url('assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
   <script src="<?= base_url('assets/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>
@@ -96,87 +107,56 @@
   <script src="<?= base_url('assets/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
   <script src="<?= base_url('assets/adminlte/plugins/toastr/toastr.min.js') ?>"></script>
   <?= $this->renderSection('scripts') ?>
+  <script>
+    (function () {
+      const themeToggle = document.getElementById('themeToggle');
+      const navbar = document.getElementById('mainNavbar');
+      const sidebar = document.getElementById('mainSidebar');
+      const brandLink = document.getElementById('brandLink');
+
+      if (!themeToggle || !navbar || !sidebar || !brandLink) return;
+
+      const applyTheme = (theme) => {
+        if (theme === 'dark') {
+          document.body.classList.add('dark-mode');
+
+          navbar.classList.remove('navbar-warning');
+          navbar.classList.add('navbar-dark', 'bg-dark');
+
+          sidebar.classList.remove('sidebar-light');
+          sidebar.classList.add('sidebar-dark-primary');
+
+          brandLink.classList.remove('bg-warning');
+          brandLink.classList.add('bg-dark');
+
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          localStorage.setItem('adminlteTheme', 'dark');
+          return;
+        }
+
+        document.body.classList.remove('dark-mode');
+
+        navbar.classList.remove('navbar-dark', 'bg-dark');
+        navbar.classList.add('navbar-warning');
+
+        sidebar.classList.remove('sidebar-dark-primary');
+        sidebar.classList.add('sidebar-light');
+
+        brandLink.classList.remove('bg-dark');
+        brandLink.classList.add('bg-warning');
+
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        localStorage.setItem('adminlteTheme', 'light');
+      };
+
+      applyTheme(localStorage.getItem('adminlteTheme') || 'light');
+
+      themeToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        applyTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark');
+      });
+    })();
+  </script>
 </body>
 
 </html>
-<script>
-  const themeToggle = document.getElementById('themeToggle');
-  const navbar = document.getElementById('mainNavbar');
-  const sidebar = document.getElementById('mainSidebar');
-  const brandLink = document.getElementById('brandLink');
-
-
-  // Apply saved theme on load
-  let savedTheme = localStorage.getItem('adminlteTheme');
-  if (savedTheme === 'dark') {
-    document.body.classList.add('dark-mode');
-
-    // Navbar
-    navbar.classList.remove('navbar-warning');
-    navbar.classList.add('navbar-dark', 'bg-dark');
-
-    // Sidebar
-    sidebar.classList.remove('sidebar-light');
-    sidebar.classList.add('sidebar-dark-primary');
-
-    // Brand link
-    brandLink.classList.remove('bg-warning');
-    brandLink.classList.add('bg-dark');
-
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-  } else {
-    // Light mode
-    navbar.classList.add('navbar-warning');
-
-    sidebar.classList.remove('sidebar-dark-primary');
-    sidebar.classList.add('sidebar-light');
-
-    brandLink.classList.remove('bg-dark');
-    brandLink.classList.add('bg-warning');
-
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-  }
-
-  // Toggle theme
-  themeToggle.addEventListener('click', function(e) {
-    e.preventDefault();
-
-    if (document.body.classList.contains('dark-mode')) {
-      // Switch to light
-      document.body.classList.remove('dark-mode');
-
-      // Navbar
-      navbar.classList.remove('navbar-dark', 'bg-dark');
-      navbar.classList.add('navbar-warning');
-
-      // Sidebar
-      sidebar.classList.remove('sidebar-dark-primary');
-      sidebar.classList.add('sidebar-light');
-
-      // Brand link
-      brandLink.classList.remove('bg-dark');
-      brandLink.classList.add('bg-warning');
-
-      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      localStorage.setItem('adminlteTheme', 'light');
-    } else {
-      // Switch to dark
-      document.body.classList.add('dark-mode');
-
-      // Navbar
-      navbar.classList.remove('navbar-warning');
-      navbar.classList.add('navbar-dark', 'bg-dark');
-
-      // Sidebar
-      sidebar.classList.remove('sidebar-light');
-      sidebar.classList.add('sidebar-dark-primary');
-
-      // Brand link
-      brandLink.classList.remove('bg-warning');
-      brandLink.classList.add('bg-dark');
-
-      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      localStorage.setItem('adminlteTheme', 'dark');
-    }
-  });
-</script>

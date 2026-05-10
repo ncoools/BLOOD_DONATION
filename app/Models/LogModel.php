@@ -52,6 +52,14 @@ public function getLogsByDateAndResid($date, $userId)
     ->findAll();
 }
 
+public function getRecentLogs(int $limit = 20)
+{
+    $limit = max(1, min(100, $limit));
+
+    return $this->orderBy('DATELOG DESC, TIMELOG DESC')
+        ->findAll($limit);
+}
+
 public function getLogsPerMonth()
 {
     return $this->db->query("

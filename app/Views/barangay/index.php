@@ -9,10 +9,10 @@
           <h1 class="m-0">Barangay</h1>
         </div>
         <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
+          <!-- <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item active">Dashboard v1</li>
-          </ol>
+          </ol> -->
         </div>
       </div>
     </div>
@@ -183,10 +183,14 @@
 <?= $this->section('scripts') ?>
 <script> const baseUrl = "<?= base_url() ?>"; </script>
 <script src="<?= base_url('js/barangay/barangay.js') ?>"></script>
-<?= $this->endSection() ?>
 <script>
-  document.getElementById('barangay_select').addEventListener('change', function () {
-    const city = this.options[this.selectedIndex].dataset.city;
-    document.getElementById('city_input').value = city || '';
-  });
+  const barangaySelect = document.getElementById('barangay_select');
+  if (barangaySelect) {
+    barangaySelect.addEventListener('change', function () {
+      const city = this.options[this.selectedIndex].dataset.city;
+      const cityInput = document.getElementById('city_input');
+      if (cityInput) cityInput.value = city || '';
+    });
+  }
 </script>
+<?= $this->endSection() ?>

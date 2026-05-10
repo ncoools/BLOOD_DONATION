@@ -115,8 +115,7 @@ $(document).on('click', '.deleteUserBtn', function () {
 $(document).ready(function () {
     const $table = $('#example1');
 
-    const csrfName = 'csrf_test_name'; 
-    const csrfToken = $('input[name="' + csrfName + '"]').val();
+    const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
     $table.DataTable({
         processing: true,

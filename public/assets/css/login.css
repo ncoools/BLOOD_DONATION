@@ -1,67 +1,153 @@
-
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Times New Roman', Times, serif;
 }
-  body{
-    height: 100;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-  background-image: linear-gradient(135deg, rgba(137, 255, 124, 0.512), rgba(216, 255, 40, 0.353)), url('../img/cho.jpg') !important;
-  background-position: left;
+
+/* BODY */
+body{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Times New Roman', Times, serif;
+
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(137, 255, 124, 0.45),
+      rgba(216, 255, 40, 0.25)
+    ),
+    url('../img/cho.jpg');
+
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
+/* LOGIN BOX */
 .login-box{
-  width: 500px;
-  padding: 40px;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur (10px);
-  color: #8DA399;
-  text-align: center;
+  width: 420px;
 }
 
-.login-box h1 {
-  margin-bottom: 10px;
+/* CARD */
+.login-card-body{
+  padding: 35px;
+  border-radius: 25px;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+
+  color: #2c3e50;
 }
 
-.login-box input{
-  width: 300%;
-  padding: 15px;
-  margin: 10px 0;
-
-  border-color: #8DA399;
-  border-radius: 10px;
-  outline: none;
+/* REMOVE DEFAULT ADMINLTE CARD BG */
+.card{
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-.login-box button {
-  width: 100%;
-  padding: 15px;
-  border:none;
-  border-radius: 10px;
-
-  border-color: #8DA399;
-  font-weight: bolder;
-  cursor: pointer;
-
+/* LOGO + TEXT */
+.login-box-msg{
+  font-size: 15px;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  line-height: 1.6;
 }
 
-@media(max-width:768px){
+.login-box-msg img{
+  width: 110px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+}
 
-    .glass-card{
-        padding:15px;
-        margin-bottom:15px;
-    }
+/* INPUTS */
+.input-group-text{
+  background-color: white !important;
+  color: #6f8d7a !important;
 
-    h2{
-        font-size:28px;
-    }
+  border: 1px solid #8DA399 !important;
+  border-left: none !important;
+
+  border-radius: 0 12px 12px 0 !important;
+
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-control{
+  height: 48px;
+  border-radius: 12px 0 0 12px !important;
+  border: 1px solid #8DA399;
+
+  font-size: 15px;
+  padding-left: 15px;
+}
+
+.form-control:focus{
+  border-color: #6f8d7a;
+  box-shadow: 0 0 0 0.15rem rgba(111, 141, 122, 0.25);
+}
+
+/* ICON SIDE */
+.input-group-text{
+  border-radius: 0 12px 12px 0 !important;
+  border: 1px solid #8DA399;
+  border-left: none;
+
+  background: #8DA399;
+  color: white;
+}
+
+/* BUTTON */
+.btn-primary{
+  border: none;
+  border-radius: 12px;
+  height: 45px;
+
+  background: #14c254;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover{
+  background: #a9da17;
+  transform: translateY(-2px);
+}
+
+/* REMEMBER ME */
+.icheck-primary label{
+  font-size: 14px;
+  color: #ffffff;
+}
+
+/* ALERTS */
+.alert{
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* MOBILE */
+@media(max-width: 768px){
+
+  .login-box{
+    width: 90%;
+  }
+
+  .login-card-body{
+    padding: 25px;
+  }
+
+  .login-box-msg img{
+    width: 90px;
+  }
 
 }
