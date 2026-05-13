@@ -256,7 +256,7 @@
                 <label>Blood Type</label>
                 <select class="form-control" name="bloodtype_id">
                   <option value="">-- Select Blood Type --</option>
-                  <?php foreach ($bloodtypes as $bt): ?>
+                  <?php foreach ($bloodtypes ?? [] as $bt): ?>
                     <option value="<?= $bt['bloodtype_id'] ?>"><?= esc($bt['bloodtype']) ?></option>
                   <?php endforeach; ?>
                 </select>

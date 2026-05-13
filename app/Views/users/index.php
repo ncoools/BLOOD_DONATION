@@ -86,7 +86,7 @@
                   <div class="form-group">
                     <label>Role</label>
                     <select class="form-control" name="role">
-                      <option value="Admin">Admin</option>
+                      <option value="Admin">Administrative Staff</option>
                       <option value="User">User</option>
                       <option value="Guest">Guest</option>
                     </select>
@@ -154,9 +154,10 @@
                   <div class="form-group">
                     <label>Role</label>
                     <select class="form-control" name="role" id="role">
-                      <option value="Admin">Admin</option>
+                      <option value="Admin">Administrative Staff</option>
                       <option value="User">User</option>
                       <option value="Guest">Guest</option>
+
                     </select>
                   </div>
                 </div>
